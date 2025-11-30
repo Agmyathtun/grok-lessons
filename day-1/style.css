@@ -1,0 +1,23 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 400px;
+}
+.box{
+    width: 180px;
+    height: 350px;
+    margin: 10px;
+    background-color: orange;
+    border-radius: 10px;
+    transition: width 0.5s ease-out;
+}
+.box.active{
+    width: 300px;
+}
