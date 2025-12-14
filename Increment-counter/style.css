@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Roboto Mono", monospace;
+    background-color: #1e1e1e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1000px;
+}
+
+.increment-counter{
+    margin: 30px;
+    text-align: center;
+    color: #fff;
+}
+
+.increment-counter i{
+    margin-bottom: 20px;
+    color: #8e44ad;
+}
+
+.increment-counter .fa-x-twitter{
+    color: #1da1f2;
+}
+
+.increment-counter .fa-youtube{
+    color: #ff0000;
+}
+.increment-counter .fa-facebook-f{
+    color: #3b5998;
+}
+
+.counter{
+    font-size: 60px;
+    margin: 10px 0;
+}
+
+.increment-counter span{
+    font-size: 20px;
+    opacity: 0.8;
+}
