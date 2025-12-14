@@ -1,0 +1,101 @@
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body{
+    /* use the imported JetBrains Mono and fallback */
+    font-family: "JetBrains Mono", sans-serif;
+    background: #333;
+    color: #fff;
+    margin: 0;
+    padding: 40px;
+    min-height: 100vh;
+}
+
+.faq-container{
+    max-width: 600px;;
+    margin:0 auto;
+}
+h1{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.faq{
+    background: transparent;
+    border : 1px solid #9fa4a8;
+    border-radius: 5px;
+    margin: 20px 0;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s ease;
+}
+
+.faq.active{
+    background: #fff;
+    color: #333;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.faq.active::before,
+.faq.active::after{
+    /* use Font Awesome 6+ family and solid weight so the glyph renders */
+    content: '\f078'; /* chevron-down */
+    font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", sans-serif;
+    font-weight: 900; /* solid style */
+    color: #2ecc71;
+    font-size: 7rem;
+    position: absolute;
+    opacity: 0.2;
+    top: 20px;
+    left: 20px;
+    z-index: 0;
+}
+
+.faq.active::before{
+    color: #3498db;
+    top: -10px;
+    left: -30px;
+    transform: rotateY(180deg);
+}
+
+.faq-title{
+    margin: 0 35px 0 0;
+}
+
+.faq-text{
+    display: none;
+    margin: 30px 0 0;
+
+}
+
+.faq-toggle{
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    padding: 0;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 30px;
+    height: 30px;
+}
+
+.faq-toggle .fa-times{
+    display: none;
+}
+.faq.active .faq-toggle .fa-times,
+.faq.active .faq-text{
+    display: block;
+}
+.faq.active .faq-toggle .fa-chevron-down{
+    display: none;
+}
