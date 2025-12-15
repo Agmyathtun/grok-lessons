@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto Mono', monospace;
+  background: #0d1117;
+  color: #c9d1d9;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+.search-container {
+  max-width: 500px;
+  margin: 0 auto 50px;
+  display: flex;
+  background: #161b22;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+#search {
+  flex: 1;
+  padding: 16px 20px;
+  font-size: 18px;
+  background: transparent;
+  border: none;
+  color: #c9d1d9;
+  outline: none;
+}
+
+#search::placeholder {
+  color: #8b949e;
+}
+
+#search-btn {
+  padding: 0 35px;
+  background: #238636;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#search-btn:hover {
+  background: #2ea043;
+}
+
+#profile-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.profile-card {
+  background: #161b22;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+  overflow: visible;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  padding: 40px;
+  gap: 30px;
+}
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid #30363d;
+  flex-shrink: 0;
+}
+
+.profile-info {
+  flex: 1;
+}
+
+.name {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.username {
+  color: #58a6ff;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.bio {
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.location {
+  color: #8b949e;
+  font-size: 16px;
+}
+
+.profile-stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 30px 40px;
+  background: #0d1117;
+  gap: 20px;
+}
+
+.stat {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-number {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #8b949e;
+  margin-top: 5px;
+}
+
+.repos {
+  padding: 30px 40px;
+}
+
+.repos h3 {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.repo-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.repo {
+  background: #0d1117;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #30363d;
+}
+
+.repo-name {
+  color: #58a6ff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.repo-name:hover {
+  text-decoration: underline;
+}
+
+.repo-desc {
+  font-size: 14px;
+  color: #8b949e;
+  margin-top: 8px;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  .avatar {
+    width: 120px;
+    height: 120px;
+  }
+  .profile-stats {
+    flex-direction: column;
+    gap: 20px;
+  }
+}

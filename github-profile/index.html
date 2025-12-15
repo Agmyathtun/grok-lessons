@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GitHub Profiles</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="search-container">
+    <input type="text" id="search" placeholder="Search GitHub username..." />
+    <button id="search-btn">Search</button>
+  </div>
+
+  <div id="profile-container">
+    <!-- FULL PROFILE CARD - we will cut this later for JS -->
+    <div class="profile-card">
+      <div class="profile-header">
+        <img src="https://avatars.githubusercontent.com/u/583231?v=4" alt="Octocat" class="avatar">
+        <div class="profile-info">
+          <h2 class="name">The Octocat</h2>
+          <p class="username">@octocat</p>
+          <p class="bio">GitHub's mascot. A cat who loves to code and eat lasagna.</p>
+          <p class="location"><i class="fas fa-map-marker-alt"></i> San Francisco</p>
+        </div>
+      </div>
+
+      <div class="profile-stats">
+        <div class="stat">
+          <span class="stat-number">8,532</span>
+          <span class="stat-label">Followers</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">2</span>
+          <span class="stat-label">Following</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">10</span>
+          <span class="stat-label">Repos</span>
+        </div>
+      </div>
+
+      <div class="repos">
+        <h3>Top Repos</h3>
+        <div class="repo-list">
+          <div class="repo">
+            <a href="#" class="repo-name">hello-world</a>
+            <p class="repo-desc">My first repository on GitHub</p>
+          </div>
+          <div class="repo">
+            <a href="#" class="repo-name">Spoon-Knife</a>
+            <p class="repo-desc">This repo is for demonstration purposes only</p>
+          </div>
+          <div class="repo">
+            <a href="#" class="repo-name">octocat.github.io</a>
+            <p class="repo-desc">Octocat's personal website</p>
+          </div>
+          <div class="repo">
+            <a href="#" class="repo-name">linguist</a>
+            <p class="repo-desc">Language savant. Detects language in any file</p>
+          </div>
+          <div class="repo">
+            <a href="#" class="repo-name">git-consortium</a>
+            <p class="repo-desc">Git collaboration project</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
