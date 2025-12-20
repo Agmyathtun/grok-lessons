@@ -1,41 +1,42 @@
-const APIURL = 'https://api.github.com/users/';
+const APIURL = 'https://api.github.com/users/'
 
 const main = document.getElementById('profile-container');
 const searchBox = document.getElementById('search');
 const searchBtn = document.getElementById('search-btn');
 
-const getUser = async (username) => {
-  try {
-    const response = await fetch(APIURL + username);
-    const data = await response.json();
-
-    if (response.ok) {
-      createUserCard(data);
-      getRepos(username);
-    } else {
-      main.innerHTML = `<p class="error">User not found. Try again.</p>`;
+const getUser = async (username) =>{
+    try{
+        const response = await fetch(APIURL + username);
+        const data = await response.json();
+        if(response.ok){
+            createUserCard(data);
+            getRepos(username);
+        }else{
+            main.innerHTML = `<p class="error">User not found. Try again.</p>`
+        }
+    } catch(error){
+        main.innerHTML = `<p class="error">Something went wrong. Check your internet connection.</p>`
     }
-  } catch (error) {
-    main.innerHTML = `<p class="error">Something went wrong. Check connection.</p>`;
-  }
-};
+}
 
-const getRepos = async (username) => {
-  const reposResponse = await fetch(APIURL + username + '/repos?sort=created');
-  const reposData = await reposResponse.json();
-  addReposToCard(reposData);
-};
+const getRepos = async (username) =>{
+    const repoResponse = await fetch(APIURL + username + '/repos?sort=created')
+    const repoData = await repoResponse.json();
 
-const createUserCard = (user) => {
-  const cardHTML = `
-    <div class="profile-card">
+    addReposToCard(repoData);
+}
+
+const createUserCard = (user) =>{
+    const cardHTML = `
+           <div class="profile-card">
       <div class="profile-header">
-        <img src="${user.avatar_url}" alt="${user.name}" class="avatar">
+        <img src="${user.avatar_url}" alt="Octocat" class="avatar">
         <div class="profile-info">
-          <h2 class="name">${user.name || user.login}</h2>
-          <p class="username">@${user.login}</p>
-          <p class="bio">${user.bio || 'No bio available'}</p>
-          <p class="location"><i class="fas fa-map-marker-alt"></i> ${user.location || 'No location'}</p>
+          <h2 class="name">${user.name}</h2>
+          <p class="username">${user.name || user.login}</p>
+          <p class="bio">${user.bio}
+          </p>
+          <p class="location"><i class="fas fa-map-marker-alt"></i>${user.location || 'No location'}</p>
         </div>
       </div>
 
@@ -49,53 +50,52 @@ const createUserCard = (user) => {
           <span class="stat-label">Following</span>
         </div>
         <div class="stat">
-          <span class="stat-number">${user.public_repos}</span>
+          <span class="stat-number">${user.public_repos.toLocaleString()}</span>
           <span class="stat-label">Repos</span>
         </div>
       </div>
 
       <div class="repos">
         <h3>Top Repos</h3>
-        <div class="repo-list" id="repos"></div>
+        <div class="repo-list" id="repos">
+        </div>
       </div>
     </div>
-  `;
+    `
+    main.innerHTML = cardHTML;
+}
 
-  main.innerHTML = cardHTML;
-};
+const addReposToCard = (repos) =>{
+    const reposEl = document.getElementById('repos');
 
-const addReposToCard = (repos) => {
-  const reposEl = document.getElementById('repos');
-  reposEl.innerHTML = ''; // clear
+    repos.innerHTML = '';
 
-  repos.slice(0, 5).forEach(repo => {
-    const repoEl = document.createElement('div');
-    repoEl.classList.add('repo');
+    repos.slice(0, 5).forEach
+    (repo => {
+        const repoEl = document.createElement('div');
+        repoEl.classList.add ('repo');
 
-    repoEl.innerHTML = `
-      <a href="${repo.html_url}" target="_blank" class="repo-name">${repo.name}</a>
-      <p class="repo-desc">${repo.description || 'No description'}</p>
-    `;
+        repoEl.innerHTML = `
+            <a href="${repo.html_url}" target="_blank" class="repo-name">${repo.name}</a>
+            <p class="repo-desc">${repo.description || 'No description'}</p>
+            `;
 
-    reposEl.appendChild(repoEl);
-  });
-};
+            reposEl.appendChild(repoEl);
+    });
+}
 
-// Search on button click
-searchBtn.addEventListener('click', () => {
-  const user = searchBox.value.trim();
-  if (user) {
-    getUser(user);
-    searchBox.value = '';
-  }
-});
+searchBtn.addEventListener('click', ()=>{
+    const user = searchBox.value.trim();
+    if(user){
+        getUser(user);
+        searchBox.value = '';
+    }
+})
 
-// Search on Enter key
-searchBox.addEventListener('keyup', (e) => {
-  if (e.key === 'Enter') {
-    searchBtn.click();
-  }
-});
+searchBox.addEventListener('keyup', (e)=>{
+    if(e.key === 'Enter'){
+        searchBtn.click();
+    }
+})
 
-// Load default user (octocat) on page load
 getUser('octocat');
