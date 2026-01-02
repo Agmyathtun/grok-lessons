@@ -1,0 +1,5 @@
+cd Desktop/react-projects   (or your path)
+npm create vite@latest todo-react -- --template react
+cd todo-react
+npm install
+npm run dev
