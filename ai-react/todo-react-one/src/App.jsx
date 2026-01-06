@@ -90,7 +90,7 @@ function App() {
         }}
         onClick={()=>setDarkMode(!darkMode)}
       >
-        {darkMode ? 'Light Mode' : 'Dark Mode'}
+        {darkMode ? '☀️' : '🌙'}
       </button>
       <p style={{
         textAlign: 'center',
