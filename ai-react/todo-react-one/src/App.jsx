@@ -13,6 +13,7 @@ function App() {
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }, [tasks]);
+  const [darkMode, setDarkMode] = useState(false);
 
   const [editingIndex, setEditingIndex] = useState(null);
   const [editInputValue, setEditInputValue] = useState('');
@@ -56,6 +57,8 @@ function App() {
     setTasks(newTasks);
   }
 
+  const Remaining = tasks.filter(task => !task.done).length;
+
   return (
     
     <div style={{
@@ -64,10 +67,43 @@ function App() {
       margin: '50px auto',
       padding: '40px',
       borderRadius: '12px',
-      boxShadow:'0 8px 20px rgba(0,0,0,0.6)'
+      boxShadow: '0 8px 20px rgba(0,0,0,0.6)',
+      background: darkMode ? '#0d1117' : '#f0f0f0',
+      color: darkMode ? '#c9d1d9' : '#333',
+      minHeight: '100vh',
+      transition: 'background 0.3s ease, color 0.3s ease'
     }}>
-
-      <p>Total Tasks : {tasks.length}</p>
+      <button
+        style={{
+          position: 'absolute',
+          top: '20px',
+          right: '20px',
+          padding: '10px',
+          background: darkMode ? '#333' : '#ddd',
+          color: darkMode ? 'white' : 'black',
+          border: 'none',
+          borderRadius: '50%',
+          cursor: 'pointer',
+          fontSize: '24px',
+          zIndex:10
+          
+        }}
+        onClick={()=>setDarkMode(!darkMode)}
+      >
+        {darkMode ? 'Light Mode' : 'Dark Mode'}
+      </button>
+      <p style={{
+        textAlign: 'center',
+        margin: '20px 0',
+        fontSize: '18px',
+        padding: '10px',
+        background: '#238636',
+        color: 'white',
+        borderRadius: '20px',
+        display: 'inline-block'
+      }}>
+        Total Tasks : {tasks.length}
+      </p>
       <p>Remaining Tasks : {tasks.filter(t => !t.done).length}</p>
       <p>Done : {tasks.filter(t => t.done).length}</p>
       
@@ -87,8 +123,8 @@ function App() {
             border: 'none',
             borderRadius: '6px 0 0 6px',
             outline: 'none',
-            background: '#0d1117',
-            color: '#c9d1d9'
+            background: darkMode ? '#0d1117' : '#f0f0f0',
+            color: darkMode ? '#c9d1d9' : '#333',
           }}
         />
         <button
@@ -116,7 +152,7 @@ function App() {
                       justifyContent: 'center',
                       padding: '15px',
                       marginBottom: '10px',
-                      background: '#0d1117',
+                      background: darkMode ? '#0d1117' : '#f0f0f0',
                       borderRadius: '6px',
                       textDecoration: task.done ? 'line-through' : 'none',
                       opacity: task.done ? 0.6 : 1
