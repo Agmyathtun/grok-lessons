@@ -13,6 +13,7 @@ function App() {
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }, [tasks]);
+  
   const [darkMode, setDarkMode] = useState(false);
 
   const [editingIndex, setEditingIndex] = useState(null);
