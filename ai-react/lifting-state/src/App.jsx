@@ -7,6 +7,8 @@ function App() {
   const increment = () => setCount(count + 1);
   const decrement = () => setCount(count - 1);
   const reset = () => setCount(0);
+  const isDecrementDisabled = count === 0;
+  const isIncrementDisabled = count >= 10;
   return (
     <div style={{ textAlign: 'center', padding: '50px' }}>
       <h1>Lifting State Up</h1>
@@ -15,6 +17,8 @@ function App() {
         onIncrement={increment}
         onDecrement={decrement}
         onReset={reset}
+        isDecrementDisabled={isDecrementDisabled}
+        isIncrementDisabled={isIncrementDisabled}
       />
     </div>
   )
